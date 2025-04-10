@@ -1,1 +1,20 @@
-<p>timeline works!</p>
+<div class="timeline-container">
+  @for (trip of timelineService.timeline; track $index; let idx = $index ) {
+    @if (idx != 0) {
+      <div style="display: flex; position: relative;">
+        <div class="line" [ngStyle]="{ 'background-color': timelineService.timeline[idx-1].colour}"></div>
+        @if (trip.connectedWithArrow) {
+          <div class="arrow" [ngStyle]="getBorderStyle(idx)"></div>
+        }
+      </div>
+    }
+    <div class="circle-container">
+      <div class="circle" [ngStyle]="{ 'background-color': trip.colour }"></div>
+      <div class="circle-text" [ngStyle]="{ 'color': trip.colour }">{{ trip.start }} - {{ trip.end }}</div>
+    </div>
+  } @empty {
+    <div>Please add a trip using the above form</div>
+  }
+</div>
+  
+  

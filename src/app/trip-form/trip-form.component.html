@@ -1,5 +1,5 @@
 <form [formGroup]="tripForm">
   <app-input-text [label]="tripFormLabels.START" [control]="tripForm.get(tripFormFields.START)" />
   <app-input-text [label]="tripFormLabels.END" [control]="tripForm.get(tripFormFields.END)" />
-  <app-button type="submit" text="Add Trip" [disabled]="tripForm.invalid"/>
+  <app-button (handleClick)="handleAddTrip()" type="submit" text="Add Trip" [disabled]="tripForm.invalid"/>
 </form>

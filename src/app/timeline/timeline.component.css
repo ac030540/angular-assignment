@@ -1,0 +1,44 @@
+.timeline-container {
+  display: flex;
+  overflow: scroll;
+  margin-top: 40px;
+  padding-left: 40px;
+  border: 1px solid rgb(215, 213, 213);
+  border-radius: 2px;
+}
+
+.circle-container {
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 16px -42px;
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.circle-text {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.line {
+  min-width: 198px;
+  height: 2px;
+  background-color: black;
+  margin-top: 20px;
+}
+
+.arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 192px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  transform: translateY(16px);
+}

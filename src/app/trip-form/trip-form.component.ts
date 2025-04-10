@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TripFormFields, TripFormLabels, TripFormModel } from '../forms/trip-form';
 import { InputTextComponent } from '../shared/components/input-text/input-text.component';
 import { locationTransformer } from '../forms/transformers';
 import { ButtonComponent } from "../shared/components/button/button.component";
+import { Trip } from '../shared/models/trip.model';
+import { TimelineService } from '../shared/services/timeline.service';
 
 @Component({
   selector: 'app-trip-form',
@@ -12,6 +14,7 @@ import { ButtonComponent } from "../shared/components/button/button.component";
   styleUrl: './trip-form.component.css'
 })
 export class TripFormComponent implements OnInit{
+  timelineService = inject(TimelineService);
   tripFormFields = TripFormFields;
   tripFormLabels = TripFormLabels;
   tripForm = new FormGroup<TripFormModel>({
@@ -34,5 +37,12 @@ export class TripFormComponent implements OnInit{
         control.setValue(transformedValue, { emitEvent: false });
       }
     });
+  }
+
+  handleAddTrip() {
+    const start = this.tripForm.get(TripFormFields.START)!.value;
+    const end = this.tripForm.get(TripFormFields.END)!.value;
+    const trip = new Trip(start, end);
+    this.timelineService.addTrip(trip);
   }
 }
