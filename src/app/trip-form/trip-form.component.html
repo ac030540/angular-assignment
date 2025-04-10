@@ -1,1 +1,4 @@
-<p>trip-form works!</p>
+<form [formGroup]="tripForm">
+  <app-input-text [label]="tripFormLabels.START" [control]="tripForm.get(tripFormFields.START)" />
+  <app-input-text [label]="tripFormLabels.END" [control]="tripForm.get(tripFormFields.END)" />
+</form>
