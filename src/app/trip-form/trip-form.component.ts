@@ -3,10 +3,11 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { TripFormFields, TripFormLabels, TripFormModel } from '../forms/trip-form';
 import { InputTextComponent } from '../input-text/input-text.component';
 import { locationTransformer } from '../forms/transformers';
+import { ButtonComponent } from "../button/button.component";
 
 @Component({
   selector: 'app-trip-form',
-  imports: [ReactiveFormsModule, InputTextComponent],
+  imports: [ReactiveFormsModule, InputTextComponent, ButtonComponent],
   templateUrl: './trip-form.component.html',
   styleUrl: './trip-form.component.css'
 })
@@ -14,8 +15,8 @@ export class TripFormComponent implements OnInit{
   tripFormFields = TripFormFields;
   tripFormLabels = TripFormLabels;
   tripForm = new FormGroup<TripFormModel>({
-    [TripFormFields.START]: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
-    [TripFormFields.END]: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    [TripFormFields.START]: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.minLength(3)] }),
+    [TripFormFields.END]: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.minLength(3)] }),
   })
 
   ngOnInit(): void {
