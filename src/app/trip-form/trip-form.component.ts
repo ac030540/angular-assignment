@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TripFormFields, TripFormLabels, TripFormModel } from '../forms/trip-form';
-import { InputTextComponent } from '../input-text/input-text.component';
+import { InputTextComponent } from '../shared/components/input-text/input-text.component';
 import { locationTransformer } from '../forms/transformers';
-import { ButtonComponent } from "../button/button.component";
+import { ButtonComponent } from "../shared/components/button/button.component";
 
 @Component({
   selector: 'app-trip-form',
